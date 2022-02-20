@@ -1,4 +1,4 @@
-from flask import *
+import flask 
 import json, random, string
 
 from config import PORT
