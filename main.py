@@ -1,6 +1,8 @@
 from flask import *
 import json, random, string
 
+from config import PORT
+
 app = Flask(__name__) 
 
 list = [
@@ -10013,5 +10015,6 @@ def home_page():
     json_dump = json.dumps(data_set)
 
     return json_dump
+
 if __name__ == '__main__':
-    app.run(port=5000)
+    app.run(debug = True, host = '0.0.0.0', port= PORT)
