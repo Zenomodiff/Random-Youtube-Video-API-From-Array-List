@@ -10012,7 +10012,7 @@ list = [
 @app.route('/', methods=['GET'])
 def home_page():
     Video_Link = random.choice(list)
-    data_set = {'CAPTCHA': Video_Link}
+    data_set = {'VIDEO_lINK': Video_Link}
     json_dump = json.dumps(data_set)
 
     return json_dump
