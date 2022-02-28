@@ -1,9 +1,9 @@
-import flask 
+from  flask import Flask, jsonify
 import json, random, string
 
 from config import PORT
 
-app = flask.Flask(__name__)
+app = Flask(__name__)
 app.config["DEBUG"] = True
 
 list = [
@@ -10011,11 +10011,19 @@ list = [
 
 @app.route('/', methods=['GET'])
 def home_page():
+    video_list = []
     Video_Link = random.choice(list)
-    data_set = {'VIDEO_lINK': Video_Link}
-    json_dump = json.dumps(data_set)
 
-    return json_dump
+    Video = {
+    'Video_Link': Video_Link
+    }
+    video_list.append(Video)
+    New_List = json.dumps(video_list, indent =2)
+    with open("baby.json", "w", encoding="utf-8") as file:
+        file.write(str(New_List)) 
+
+
+    return jsonify(video_list)
 
 if __name__ == '__main__':
     app.run(debug = True, host = '0.0.0.0', port= PORT)
